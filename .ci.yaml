@@ -155,6 +155,16 @@ targets:
       - dev/**
       - bin/**
 
+  - name: Linux gradle_java8_compile_test
+    builder: Linux gradle_java8_compile_test
+    properties:
+      tags: >
+        ["devicelab","hostonly"]
+    scheduler: luci
+    runIf:
+      - dev/**
+      - bin/**
+
   - name: Linux gradle_plugin_bundle_test
     builder: Linux gradle_plugin_bundle_test
     properties:
@@ -210,6 +220,17 @@ targets:
 
   - name: Linux module_test
     builder: Linux module_test
+    properties:
+      tags: >
+        ["devicelab","hostonly"]
+    scheduler: luci
+    runIf:
+      - dev/**
+      - packages/flutter_tools/**
+      - bin/**
+
+  - name: Linux plugin_dependencies_test
+    builder: Linux plugin_dependencies_test
     properties:
       tags: >
         ["devicelab","hostonly"]
@@ -675,6 +696,18 @@ targets:
       - dev/**
       - bin/**
 
+  - name: Mac plugin_dependencies_test
+    builder: Mac plugin_dependencies_test
+    bringup: true
+    properties:
+      tags: >
+        ["devicelab","hostonly"]
+    scheduler: luci
+    runIf:
+      - dev/**
+      - packages/flutter_tools/**
+      - bin/**
+
   - name: Mac plugin_test
     builder: Mac plugin_test
     properties:
@@ -921,6 +954,17 @@ targets:
       - packages/flutter_tools/**
       - bin/**
 
+  - name: Windows plugin_dependencies_test
+    builder: Windows plugin_dependencies_test
+    properties:
+      tags: >
+        ["devicelab","hostonly"]
+    scheduler: luci
+    runIf:
+      - dev/**
+      - packages/flutter_tools/**
+      - bin/**
+
   - name: Windows plugin_test
     builder: Windows plugin_test
     properties:
@@ -1137,9 +1181,17 @@ targets:
         ["devicelab"]
     scheduler: luci
 
+  - name: Linux devtools_profile_start_test
+    builder: Linux devtools_profile_start_test
+    bringup: true
+    presubmit: false
+    properties:
+      tags: >
+        ["devicelab"]
+    scheduler: luci
+
   - name: Linux docs_test
     builder: Linux docs_test
-    bringup: true # Flaky https://github.com/flutter/flutter/issues/84609
     presubmit: false
     properties:
       tags: >
@@ -1628,6 +1680,14 @@ targets:
         ["devicelab"]
     scheduler: luci
 
+  - name: Mac_android integration_ui_frame_number
+    builder: Mac_android integration_ui_frame_number
+    presubmit: false
+    properties:
+      tags: >
+        ["devicelab"]
+    scheduler: luci
+
   - name: Mac_android integration_ui_screenshot
     builder: Mac_android integration_ui_screenshot
     presubmit: false
@@ -1654,7 +1714,6 @@ targets:
 
   - name: Mac_android microbenchmarks
     builder: Mac_android microbenchmarks
-    bringup: true
     presubmit: false
     properties:
       tags: >
@@ -1854,6 +1913,22 @@ targets:
         ["devicelab"]
     scheduler: luci
 
+  - name: Mac_ios flutter_gallery_ios_sksl_warmup__transition_perf
+    builder: Mac_ios flutter_gallery_ios_sksl_warmup__transition_perf
+    presubmit: false
+    properties:
+      tags: >
+        ["devicelab"]
+    scheduler: luci
+
+  - name: Mac_ios cubic_bezier_perf_ios_sksl_warmup__timeline_summary
+    builder: Mac_ios cubic_bezier_perf_ios_sksl_warmup__timeline_summary
+    presubmit: false
+    properties:
+      tags: >
+        ["devicelab"]
+    scheduler: luci
+
   - name: Mac_ios flutter_view_ios__start_up
     builder: Mac_ios flutter_view_ios__start_up
     presubmit: false
@@ -1888,6 +1963,14 @@ targets:
 
   - name: Mac_ios integration_ui_ios_keyboard_resize
     builder: Mac_ios integration_ui_ios_keyboard_resize
+    presubmit: false
+    properties:
+      tags: >
+        ["devicelab"]
+    scheduler: luci
+
+  - name: Mac_ios integration_ui_ios_frame_number
+    builder: Mac_ios integration_ui_ios_frame_number
     presubmit: false
     properties:
       tags: >
